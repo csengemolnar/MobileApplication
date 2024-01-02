@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cookie.SearchRecepiesPage"
+             BackgroundColor="{DynamicResource White}"
+             Title="Cookie">
+    
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- For Image -->
+                <RowDefinition Height="Auto"/>
+                <!-- For Search Label -->
+                <RowDefinition Height="Auto"/>
+                <!-- For Entry and Button -->
+                <RowDefinition Height="*"/>
+                <!-- For ListView -->
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+
+            <Image Source="cookie.png" 
+           Grid.Row="0" 
+           HorizontalOptions="Center" 
+           VerticalOptions="Center"
+           HeightRequest="100"/>
+
+
+            <Label Text="Search for recipes:" 
+           Grid.Row="1" 
+           HorizontalOptions="Center" 
+           VerticalOptions="Center" 
+           FontSize="Medium" 
+           TextColor="Wheat"
+           Margin="5,10,5,10"
+                   />
+
+            <!-- Entry -->
+            <Entry TextColor="black" 
+           BackgroundColor="Beige"  
+           Grid.Row="2" 
+           Grid.Column="0"
+           HorizontalOptions="FillAndExpand"
+           Text="{Binding SearchFilter, Mode=TwoWay}" 
+           ReturnCommand="{Binding SearchCommand}"></Entry>
+
+                <!-- Button -->
+            <Button Text="Search" 
+            BackgroundColor="SaddleBrown" 
+            TextColor="White" 
+            Grid.Row="2" 
+            Grid.Column="1" 
+            Command="{Binding SearchCommand}"/>
+        </Grid>
+
+
+
+        <ListView Grid.Row="3" ItemsSource="{Binding TastyRecepies}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell  Text="{Binding Name}" TextColor="SaddleBrown" 
+                          Command="{Binding SelectCommand}" CommandParameter="{Binding}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+
+    </Grid>
+</ContentPage>

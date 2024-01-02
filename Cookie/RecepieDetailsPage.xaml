@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cookie.RecepieDetailsPage"
+             BackgroundColor="{DynamicResource White}"
+             BindingContext="{Binding TastyRecepie}"
+             Title="Recepie"
+             >
+    <ScrollView Margin="10">
+        <VerticalStackLayout >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout>
+                    <Label Text="{Binding Name}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="Large" TextColor="SaddleBrown" />
+                    <Image
+                    Source="{Binding ThumbnailUrl}"
+                     HorizontalOptions="Center" 
+                     VerticalOptions="Center"
+                     HeightRequest="100"
+                    />
+                    <Label HorizontalTextAlignment="Center" Padding="5,10,5,10">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text=" Portion: " FontAttributes="Bold" TextColor="Black" />
+                                <Span Text="{Binding Yields }" TextColor="SaddleBrown" />
+                                <Span Text=" Total minutes: " FontAttributes="Bold" TextColor="Black" />
+                                <Span Text="{Binding TotalTimeMinutes  }" TextColor="SaddleBrown" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+
+                <StackLayout Grid.Row="1" BindableLayout.ItemsSource="{Binding DisplayTexts}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding .}"
+                                   TextColor="SaddleBrown" 
+                                   FontSize="Body" 
+                                   LineBreakMode="WordWrap" 
+                                   HorizontalOptions="FillAndExpand" 
+                                   VerticalOptions="StartAndExpand"
+                                   Margin="0,10,0,10"/>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+
+            </Grid>
+        </VerticalStackLayout>
+
+    </ScrollView>
+    
+</ContentPage>

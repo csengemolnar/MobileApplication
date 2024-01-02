@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:Cookie"
+             x:Class="Cookie.MainFlyoutPage"
+             Title="Cookie">
+    <FlyoutPage.Flyout>
+        <local:SideMenuPage />
+    </FlyoutPage.Flyout>
+
+    <FlyoutPage.Detail>
+        <NavigationPage x:Name="_navigationPage" Title="Saved Recepies!">
+            <x:Arguments>
+                <local:SearchRecepiesPage />
+            </x:Arguments>
+        </NavigationPage>
+    </FlyoutPage.Detail>
+    
+</FlyoutPage>
